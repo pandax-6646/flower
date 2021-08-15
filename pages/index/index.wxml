@@ -1,0 +1,34 @@
+<wxs module="filter" src="../../utils/index.wxs" module="utils"></wxs>
+
+<swiper indicator-dots="true" autoplay="true" interval="5000" duration="300" circular='true'>
+  <block wx:for="{{swiperImg}}" wx:key="bannerId">
+    <swiper-item class="wp-100">
+      <image src="{{item.imgUrl}}" class="wp-100" mode="widthFix" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="goodsList wp-100 bc-fff flex jc-sa fw-w mb-10">
+  <navigator wx:for="{{goodsList}}" wx:key="flowerId" url="/pages/detail/detail?flowerId={{item.flowerId}}"
+    hover-class="navigator-hover" class="goods-item mb-10">
+    <image src="{{item.imgUrl}}" mode="widthFix" class="wp-100" />
+
+    <view class="goods-info">
+      <view class="goods-title fc-333 fs-15">{{item.goodName}}</view>
+      <view class="goods-title fs-12 mt-5 fc-666">{{item.flowerLanguage}}</view>
+      <view class="price-info flex jc-sb ai-c">
+        <view>
+          <text class="price">￥{{item.price}}</text>
+          <text class=" originPrice fs-12 fc-999 ml-5">￥{{item.originPrice}} </text>
+        </view>
+        <text class="fs-12 fc-999">{{utils.formatSaleNum(item.saleNum)}} w</text>
+      </view>
+    </view>
+
+  </navigator>
+</view>
+
+<view class="footer fc-666 fs-12">
+  <text calss="wp-100" wx:if="{{isShowLoadMore}}">正在拼命加载中....</text>
+  <text wx:else>没有更多</text>
+</view>

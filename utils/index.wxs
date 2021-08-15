@@ -1,0 +1,55 @@
+/**
+ * 这该死的不支持 ES6 语法
+ * 格式化时间
+ * @time 为一个毫秒数的时间
+ * */
+function formatTime(time) {
+  var timeObj = {
+    year: time.getFullYear(),
+    month: time.getMonth() + 1,
+    day: time.getDate(),
+    hour: time.getHours(),
+    minute: time.getMinutes(),
+    second: time.getSeconds()
+  }
+  // for (prop in timeObj) {
+  //   console.log(prop);
+  // }
+}
+
+/**
+ * 格式化销量
+ * @saleNum     价格
+ * 
+ * */
+function formatSaleNum(saleNum) {
+  return (saleNum / 10000).toFixed(1);
+}
+
+
+/**
+ * 多行文字用点展示
+ * @text      需要截断的文本
+ * @textNum   保留的文本长度
+ * */
+function useTextSpot(text, textNum) {
+  if (text.length > textNum) {
+    return text.slice(0, textNum) + '...';
+  } else {
+    return text
+  }
+}
+
+
+
+
+
+
+
+
+
+module.exports = {
+  formatTime: formatTime,
+  formatSaleNum: formatSaleNum,
+  useTextSpot: useTextSpot
+}

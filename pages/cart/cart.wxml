@@ -1,0 +1,82 @@
+<wxs module="filter" src="../../utils/index.wxs" module="utils"></wxs>
+
+<view class="top-bar flex jc-sb fs-12 bc-fff fixed wp-100">
+  <view class="back" bindtap="backPage">
+    <van-icon name="arrow-left"  />
+    <text>返回</text>
+  </view>
+
+  <text>商品库存有限，请尽快下单</text>
+  <text bindtap="editBtn">
+    <text wx:if="{{isEdit}}">完成</text>
+    <text wx:else>编辑</text>
+  </text>
+</view>
+
+<view class="mt-10 distribution fs-12 bc-fff wp-100">
+  <checkbox-group bindchange="checkboxDistributionType">
+    <label>
+      <checkbox value="isDistribution" />
+      <text>同城配送订花</text>
+    </label>
+  </checkbox-group>
+</view>
+
+<view class="cart-list" wx:if="{{!isShowEmpty}}">
+  <checkbox-group bindchange="checkboxChange">
+    <view class="item flex jc-sb bc-fff ai-c" wx:for="{{cartGoodsList}}" wx:key="flowerId">
+      <text>{{item.checked}}</text>
+      <label>
+        <checkbox value="{{item.flowerId}}" checked="{{item.checked}}" />
+      </label>
+      <view class="flex fg-1 ai-c ml-15 jc-sb">
+        <view>
+          <image src="{{item.imgUrl}}" mode="widthFix" />
+        </view>
+
+        <view class="ml-10 fg-1 flex fd-c jc-sa goods-info">
+          <view class="fs-15 fc-333">{{item.goodName}}</view>
+          <view class="fs-12 fc-666">规格：{{utils.useTextSpot(item.material, 30)}}</view>
+
+          <view class="flex jc-sb ai-c">
+            <view class="price fs-12">
+              <text>￥</text>
+              <text class="fs-18">{{item.price}}</text>
+              <text>.00</text>
+            </view>
+            <view class="fs-14 fc-666" wx:if="{{isEdit}}">x {{item.buyNum}}</view>
+            <view class="change-num flex" wx:else>
+              <view class="{{item.buyNum == 1 ? 'disabled' : ''}}" data-cart-id="{{item.cartId}}" data-step="-1"
+                data-buy-num="{{item.buyNum}}" bindtap="changeGoodsNum">
+                - </view>
+              <view>{{item.buyNum}}</view>
+              <view data-cart-id="{{item.cartId}}" data-step="+1" data-buy-num="{{item.buyNum}}"
+                bindtap="changeGoodsNum">
+                + </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </checkbox-group>
+</view>
+<van-empty wx:else description="购物车是空的~~~" />
+
+<view class="footer fixed bc-fff jc-sb wp-100 ai-c fs-14 flex">
+  <view class="flex ai-c">
+    <checkbox-group bindchange="selectAll">
+      <label>
+        <checkbox value="{{selectAllBtn.value}}" checked="{{selectAllBtn.checked}}" />
+        <text>全选</text>
+      </label>
+    </checkbox-group>
+    <view class="priceAll ml-20">
+      <text>总计:</text>
+      <text class="fs-18">￥{{priceAll}}</text>
+      <text>.00</text>
+    </view>
+  </view>
+
+  <view class="pay" wx:if="{{isEdit}}" bindtap="delBtn"> 删除 </view>
+  <view class="pay" wx:else bindtap="preOrderBtn"> 去下单 </view>
+</view>

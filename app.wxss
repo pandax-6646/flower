@@ -1,0 +1,22 @@
+@import './styles/index.wxss';
+
+page {
+  background-color: #f7f7f7;
+}
+
+/* 覆盖vant样式 */
+page .van-checkbox__icon--checked {
+  background-color: #c03131;
+  border: none;
+}
+
+.container {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+}
+

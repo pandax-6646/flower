@@ -1,0 +1,234 @@
+<wxs module="filter" src="../../utils/index.wxs" module="utils"></wxs>
+
+<swiper class="datail-swiper" indicator-dots="true" autoplay="true" interval="5000" duration="300" circular='true'>
+  <block wx:for="{{goodsInfo.imgUrls}}" wx:key="*this">
+    <swiper-item class="wp-100">
+      <image src="{{item}}" class="wp-100" mode="widthFix" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="datail-info">
+  <view class="goods-title bc-fff ">
+    <view class="fs-15">{{goodsInfo.ad}}</view>
+    <view class="fs-12 fc-666">{{goodsInfo.flowerLanguage}}</view>
+
+    <view class="price fs-12">
+      <text>￥</text>
+      <text class="curr-price fs-18">{{goodsInfo.price}}</text>
+      <text class="origin-price ml-5">￥{{goodsInfo.originPrice}}</text>
+    </view>
+    <view class='fs-12 mt-5 fc-666'>销量：{{utils.formatSaleNum(goodsInfo.saleNum)}} 万件</view>
+  </view>
+
+  <view class="coupons mt-10 fs-12 fc-666 flex jc-sb">
+    <view>领券</view>
+    <van-icon name="arrow" />
+  </view>
+
+  <view class="distribution fs-12 mt-10">
+    <view class="flex jc-sb">
+      <view>
+        <text class="fc-666">选择</text>
+        <text class="ml-10">请选择规格</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="flex jc-sb mt-10">
+      <view>
+        <text class="fc-666">保障</text>
+        <text class="ml-10">全国配送·新鲜保障·图片回传·1-3小时送达</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+
+  <view class="evaluate mt-10 fs-12 fc-666">
+    <view class="evaluate-title flex jc-sb">
+      <text>评价</text>
+      <view>
+        <text>查看更多</text>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+
+    <view class="evaluate-box">
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+      <view class="evaluate">
+        <view class="user-info flex jc-sb ai-c">
+          <view class=" flex ai-c">
+            <image src="../../img/my.png" />
+            <text class="ml-15">*可</text>
+          </view>
+          <text>2020-12-21</text>
+        </view>
+        <view class="mt-5">红玫瑰11枝，粉色（或者紫色）勿忘我0.3扎，栀子叶8枝</view>
+        <view class="fc-000 fs-16 mt-10">非常不错哈，回老家也给送过来，花很美</view>
+        <view class="phone-img mt-10">
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-2ef31a1e47a813a1.png" />
+          <image src="https://upload-images.jianshu.io/upload_images/8489743-e4a65c49548dcf6e.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<van-goods-action class="footer">
+  <van-goods-action-icon icon="chat-o" text="客服" dot />
+  <navigator url="/pages/cart/cart" open-type="switchTab">
+    <text class="cartAllNum" style="position: ablesult; top: 0px;">{{cartGoodsListAllNum}}</text>
+    <van-goods-action-icon class="cart" icon="cart-o" text="购物车" />
+  </navigator>
+  <van-goods-action-icon icon="shop-o" text="店铺" />
+  <van-goods-action-button type="warning" bindtap="addCart" text="加入购物车" />
+  <van-goods-action-button type="danger" text="立即购买" />
+</van-goods-action>
