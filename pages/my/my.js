@@ -95,7 +95,11 @@ Page({
       content: '是否退出登录',
       success: (res) => {
         if (res.confirm) {
-          wx.setStorageSync('token', '');
+          wx.setStorageSync({
+            'token': '',
+            'cartGoodsListAllNum': ""
+          });
+
           this.setData({
             token: ''
           });

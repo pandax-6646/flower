@@ -9,18 +9,33 @@ Page({
     isEdit: false,
     isShowEmpty: true,
     // 商品总价格
-    priceAll: null,
+    priceAll: 0,
 
     // 全选按钮
     selectAllBtn: {
       value: 'selectAll',
-      checked: true
+      checked: false
     }
   },
 
   onShow() {
-    wx.hideTabBar();
-    this.getCartGoodsListData();
+    if (wx.getStorageSync('token')) {
+      wx.hideTabBar();
+      this.getCartGoodsListData();
+    } else {
+
+      wx.showModal({
+        title: '提示',
+        content: '是否去登录登录',
+        success: (res) => {
+          if (res.confirm) {
+            wx.switchTab({
+              url: 'pages/my/my'
+            })
+          }
+        }
+      });
+    }
   },
 
   // 回退页面
@@ -35,20 +50,31 @@ Page({
     let cartGoodsList = [];
     cartRequest.getCartGoodsList().then(res => {
       if (res.code == 666) {
-        cartGoodsList = res.carts.map(item => {
-          return {
-            ...item,
-            checked: true
-          }
-        })
+        if (res.carts.length != 0) {
 
-        this.setData({
-          cartGoodsList,
-          isShowEmpty: false
-        })
 
-        // 计算商品总价格
-        this.getPriceAll();
+          cartGoodsList = res.carts.map(item => {
+            return {
+              ...item,
+              checked: true,
+            }
+          })
+
+          this.setData({
+            cartGoodsList,
+            isShowEmpty: false,
+            [`selectAllBtn.checked`]: true
+          })
+
+          // 计算商品总价格
+          this.getPriceAll();
+        } else {
+          wx.showToast({
+            title: '先去添加商品吧',
+            icon: 'none',
+            duration: 1000
+          });
+        }
       }
     }).catch(err => {
       console.log(err);
@@ -111,10 +137,7 @@ Page({
     });
 
     // 更新购物车里的商品总件数
-    wx.setStorage({
-      key: "cartGoodsListAllNum",
-      data: wx.getStorageSync('cartGoodsListAllNum') + Number(step),
-    })
+    wx.setStorageSync("cartGoodsListAllNum", wx.getStorageSync('cartGoodsListAllNum') + Number(step))
   },
 
   // 全选按钮逻辑
@@ -122,7 +145,7 @@ Page({
     let len = e.detail.value.length
     this.data.cartGoodsList.forEach((goods, index) => {
       this.setData({
-        [`cartGoodsList[${index}].checked`]: !len == 0
+        [`cartGoodsList[${index}].checked`]: !len == 0,
       })
     });
 
@@ -182,7 +205,7 @@ Page({
   // 删除商品按钮
   delBtn() {
     wx.showModal({
-      title:'提示',
+      title: '提示',
       content: '是否删除选中的商品',
       success: (res) => {
         if (res.confirm) {
@@ -222,10 +245,7 @@ Page({
         selectGoodsList.forEach(goods => {
           num += goods.buyNum;
         })
-        wx.setStorage({
-          key: "cartGoodsListAllNum",
-          data: wx.getStorageSync('cartGoodsListAllNum') - num,
-        })
+        wx.setStorageSync("cartGoodsListAllNum", wx.getStorageSync('cartGoodsListAllNum') - num, )
 
         // 更新页面上的数据
         let cartGoodsList = this.data.cartGoodsList.filter(goods => !goods.checked)
