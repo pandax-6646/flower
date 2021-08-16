@@ -1,62 +1,37 @@
+const {
+  textareaProps
+} = require("../../vant/field/props");
+
 Page({
-  // onShareAppMessage() {
-  //   return {
-  //     title: 'checkbox',
-  //     path: 'page/component/pages/checkbox/checkbox'
-  //   }
-  // },
 
   data: {
-    items: [{
-        value: 'USA',
-        name: '美国'
-      },
-      {
-        value: 'CHN',
-        name: '中国',
-        checked: 'true'
-      },
-      {
-        value: 'BRA',
-        name: '巴西'
-      },
-      {
-        value: 'JPN',
-        name: '日本'
-      },
-      {
-        value: 'ENG',
-        name: '英国'
-      },
-      {
-        value: 'FRA',
-        name: '法国'
+
+  },
+
+
+
+
+  getUserInfo(a) {
+
+    wx.getUserProfile({
+
+
+
+      // 获取用户信息时显示弹窗，但必须要说明获取用户信息用途
+      desc: 'sdsdfsdf',
+      success(res) {
+        console.log(res);
+        console.log(a)
       }
-    ]
+    })
+
+
   },
 
-  checkboxChange(e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
 
-    // const items = this.data.items
-    // const values = e.detail.value
-    // for (let i = 0, lenI = items.length; i < lenI; ++i) {
-    //   items[i].checked = false
+  onShow() {
 
-    //   for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-    //     if (items[i].value === values[j]) {
-    //       items[i].checked = true
-    //       break
-    //     }
-    //   }
-    // }
 
-    // this.setData({
-    //   items
-    // })
-  },
 
-  selectAll(e) {
-    this.checkboxChange(e)
   }
 })

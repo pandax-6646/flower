@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* color: #aaa; */
 }
+
 .logout {
   text-decoration: underline;
 }
@@ -19,7 +19,7 @@
 }
 
 .default {
-  font-size:30px;
+  font-size: 30px;
   color: #fd866e;
   font-weight: bold;
   background-color: #fff;
@@ -36,13 +36,12 @@
 }
 
 .order-box {
-  height: 100px;
-  width: 100%;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
   margin-top: 20px;
   box-shadow: 1px 1px 1px 1px #ebebeb;
-} 
+  overflow: hidden;
+}
 
 .login {
   background-color: rgb(155, 101, 101);
@@ -55,4 +54,3 @@
   height: 200px;
   background-image: url(http://flower.huruqing.cn/static/media/bg.30648b38.png);
 }
-

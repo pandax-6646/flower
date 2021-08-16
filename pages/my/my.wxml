@@ -1,46 +1,42 @@
-<view class="header f14">
-  <view class="userinfo pt-16">
-    <view class="userinfo-avatar flex aic jc-c" bindtap="bindViewTap">
+<view class="header fs-14">
+  <view class="userinfo pt-15">
+    <view class="userinfo-avatar flex ai-c jc-c" bindtap="bindViewTap">
       <open-data wx:if="{{token}}" type="userAvatarUrl"></open-data>
       <view wx:else class="flex default">花</view>
     </view>
-    <view class="flex fdc aic jc-c" wx:if="{{token}}">
+    <view class="flex fd-c ai-c jc-c" wx:if="{{token}}">
       <open-data class="name" type="userNickName"></open-data>
-      <view class="fff logout" bindtap="logout">退出</view>
+      <view class="fc-fff logout" bindtap="logout">退出</view>
     </view>
-    <view wx:else class="flex fdc aic jc-c">
-      <text bindtap="getUserProfile" class="fff f12">请登录您的账号</text>
-      <text bindtap="getUserProfile" class="fff login mt-5">立即登录</text>
+    <view wx:else class="flex fd-c ai-c jc-c">
+      <text bindtap="getUserProfile" class="fc-fff f12">请登录您的账号</text>
+      <text bindtap="getUserProfile" class="fc-fff login mt-5">立即登录</text>
     </view>
   </view>
-  <view class="tabs flex jc-sa fff">
-    <view class="flex fdc aic">
+  <view class="flex jc-sa fc-fff">
+    <view class="flex fd-c ai-c">
       <text>10</text>
       <view>
-        <van-icon name="star" />
-        我的收藏
-      </view>
+        <van-icon name="star" />我的收藏</view>
     </view>
-    <view class="flex fdc aic">
+    <view class="flex fd-c ai-c">
       <text>50</text>
       <view>
-        <van-icon name="location" />
-        我的足迹
-      </view>
+        <van-icon name="location" />我的足迹</view>
     </view>
   </view>
-  <view class="order-box bg-fff abs ovh flex fdc jc-sa">
+  <view class="order-box bg-fff flex fd-c wp-100 jc-sa">
     <van-cell title="我的订单" value="查看更多" is-link></van-cell>
-    <view class="flex jc-sa f14">
-      <view class="flex fdc aic f999">
+    <view class="flex jc-sa fs-14 bc-fff pt-5 pb-5">
+      <view class="flex fd-c ai-c fc-999">
         <van-icon size="18" name="after-sale" />
         <text>待支付</text>
       </view>
-      <view class="flex fdc aic f999">
+      <view class="flex fd-c ai-c fc-999">
         <van-icon size="18" name="logistics" />
         <text>待收货</text>
       </view>
-      <view class="flex fdc aic f999">
+      <view class="flex fd-c ai-c fc-999">
         <van-icon size="18" name="cluster-o" />
         <text>已完成</text>
       </view>

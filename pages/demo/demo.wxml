@@ -1,14 +1,1 @@
-<checkbox-group bindchange="checkboxChange">
-  <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="value">{{value}}
-    <view class="weui-cell__hd">
-      <checkbox value="{{item.value}}" checked="{{item.checked}}"  />
-    </view>
-    <view class="weui-cell__bd">{{item.name}}</view>
-  </label>
-
-
-
-  <checkbox  />
-</checkbox-group>
-
- 
+<button open-type="getUserInfo" bindtap='getUserInfo'>获取用户信息</button>
