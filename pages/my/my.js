@@ -1,68 +1,103 @@
-// pages/preOrder/preOrder.js
+import {
+  userRequest
+} from '../../api/index.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    token: '',
+  },
+
+
+
+
+
+  onShow() {
+    let token = wx.getStorageSync('token');
+    if (token) {
+      this.setData({
+        token
+      })
+    }
+  },
+
+
+
+
+  // 用户登录
+  login() {
+    // 请求参数
+    let params = {}
+
+    Promise.all([this.getCode(), this.getUserInfo()]).then(res => {
+      params.code = res[0].code;
+      params.iv = res[1].iv;
+      params.encryptedData = res[1].encryptedData;
+      params.userInfo = res[1].userInfo;
+
+
+      userRequest.wxLogin(params).then(res => {
+        wx.setStorageSync({
+          key: "token",
+          data: res.result.token,
+        })
+        this.setData({
+          token: res.result.token,
+        })
+
+
+      }).catch(err => {
+        wx.showToast({
+          title: "请先绑定开发者",
+          icon: 'error ',
+          duration: 1000
+        });
+      })
+
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+
+
+
+  // 获取微信的 code 信息
+  getCode() {
+    return new Promise((resolve, reject) => {
+      wx.login({
+        timeout: 10000,
+        success(res) {
+          resolve(res)
+        },
+        fail(err) {
+          reject(err)
+        }
+      })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  // 获取微信用户信息用于登录
+  getUserInfo() {
+    return new Promise((resolve, reject) => {
+      wx.getUserProfile({
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+        // 获取用户信息时显示弹窗，但必须要说明获取用户信息用途
+        desc: '就不告诉你',
+        success(res) {
+          resolve(res);
+        },
+        fail(err) {
+          reject(err);
+        }
+      })
+    })
   }
+
+
 })
 
 

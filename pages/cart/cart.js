@@ -1,5 +1,6 @@
 import {
-  cartRequest, preOrderRequest
+  cartRequest,
+  preOrderRequest
 } from '../../api/index.js'
 
 Page({
@@ -180,6 +181,26 @@ Page({
 
   // 删除商品按钮
   delBtn() {
+    wx.showModal({
+      content: '是否删除选中的商品',
+      success: (res) => {
+        if (res.confirm) {
+          this.runDelGoods();
+        } else {
+          wx.showToast({
+            title: '已取消',
+            icon: 'info',
+            duration: 1000
+          });
+        }
+      },
+    })
+  },
+
+
+  // 执行删除商品操作逻辑
+  runDelGoods() {
+
     // 获取所有选中的商品 cartId 列表
     let selectGoodsList = this.data.cartGoodsList.filter(goods => goods.checked);
     let selectCartIdList = selectGoodsList.map(goods => goods.cartId);
@@ -228,6 +249,7 @@ Page({
       })
     }
   },
+
 
   // 生成预订单按钮
   preOrderBtn() {

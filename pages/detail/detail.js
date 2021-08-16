@@ -5,7 +5,7 @@ import {
 
 Page({
   data: {
-    flowerId: "93e07750052d11ea835b6deaac2f51f8",
+    flowerId: "",
     goodsInfo: {},
 
     // 购物车里的商品总件数
@@ -14,9 +14,9 @@ Page({
 
   // 页面开始加载时执行
   onLoad(options) {
-    // this.setData({
-    //   flowerId: options.flowerId
-    // })
+    this.setData({
+      flowerId: options.flowerId
+    })
   },
 
 

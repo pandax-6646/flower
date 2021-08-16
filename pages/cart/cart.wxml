@@ -22,14 +22,14 @@
   </checkbox-group>
 </view>
 
-<view class="cart-list" wx:if="{{!isShowEmpty}}">
+<view class="cart-list wp-100" wx:if="{{!isShowEmpty}}">
   <checkbox-group bindchange="checkboxChange">
     <view class="item flex jc-sb bc-fff ai-c" wx:for="{{cartGoodsList}}" wx:key="flowerId">
-      <text>{{item.checked}}</text>
+      <!-- <text>{{item.checked}}</text> -->
       <label>
         <checkbox value="{{item.flowerId}}" checked="{{item.checked}}" />
       </label>
-      <view class="flex fg-1 ai-c ml-15 jc-sb">
+      <view class="flex fg-1 ai-c jc-sb">
         <view>
           <image src="{{item.imgUrl}}" mode="widthFix" />
         </view>
@@ -45,7 +45,7 @@
               <text>.00</text>
             </view>
             <view class="fs-14 fc-666" wx:if="{{isEdit}}">x {{item.buyNum}}</view>
-            <view class="change-num flex" wx:else>
+            <view class="change-num flex fs-12" wx:else>
               <view class="{{item.buyNum == 1 ? 'disabled' : ''}}" data-cart-id="{{item.cartId}}" data-step="-1"
                 data-buy-num="{{item.buyNum}}" bindtap="changeGoodsNum">
                 - </view>
@@ -63,16 +63,16 @@
 <van-empty wx:else description="购物车是空的~~~" />
 
 <view class="footer fixed bc-fff jc-sb wp-100 ai-c fs-14 flex">
-  <view class="flex ai-c">
+  <view class="flex ai-c ">
     <checkbox-group bindchange="selectAll">
       <label>
         <checkbox value="{{selectAllBtn.value}}" checked="{{selectAllBtn.checked}}" />
-        <text>全选</text>
+        <text class="fs-12">全选</text>
       </label>
     </checkbox-group>
-    <view class="priceAll ml-20">
+    <view class="priceAll fs-12 ml-20">
       <text>总计:</text>
-      <text class="fs-18">￥{{priceAll}}</text>
+      <text class="fs-16">￥{{priceAll}}</text>
       <text>.00</text>
     </view>
   </view>

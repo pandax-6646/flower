@@ -23,7 +23,7 @@ function formatTime(time) {
  * 
  * */
 function formatSaleNum(saleNum) {
-  return (saleNum / 10000).toFixed(1);
+  return (saleNum / 10000).toFixed(0);
 }
 
 

@@ -85,3 +85,19 @@ export const preOrderRequest = {
     return request.get('preOrder/all');
   }
 }
+
+
+
+// 个人中心页请求
+export const userRequest = {
+
+  /**
+   * 微信登录
+   * @code 
+   * 
+   * */ 
+  wxLogin(params) {
+    return request.post('user/wxlogin', params)
+  }
+
+}
