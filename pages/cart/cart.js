@@ -204,27 +204,35 @@ Page({
 
   // 删除商品按钮
   delBtn() {
-    wx.showModal({
-      title: '提示',
-      content: '是否删除选中的商品',
-      success: (res) => {
-        if (res.confirm) {
-          this.runDelGoods();
-        } else {
-          wx.showToast({
-            title: '已取消',
-            icon: 'info',
-            duration: 1000
-          });
-        }
-      },
-    })
+    let selectGoodsList = this.data.cartGoodsList.filter(goods => goods.checked).map(goods => goods.cartId);
+    if (selectGoodsList.length != 0) {
+      wx.showModal({
+        title: '提示',
+        content: '是否删除选中的商品',
+        success: (res) => {
+          if (res.confirm) {
+            this.runDelGoods();
+          } else {
+            wx.showToast({
+              title: '已取消',
+              icon: 'info',
+              duration: 1000
+            });
+          }
+        },
+      })
+    } else {
+      wx.showToast({
+        title: "请先选中要删除的商品",
+        icon: 'none',
+        duration: 1000
+      });
+    }
   },
 
 
   // 执行删除商品操作逻辑
   runDelGoods() {
-
     // 获取所有选中的商品 cartId 列表
     let selectGoodsList = this.data.cartGoodsList.filter(goods => goods.checked);
     let selectCartIdList = selectGoodsList.map(goods => goods.cartId);
@@ -279,20 +287,28 @@ Page({
   preOrderBtn() {
     // 获取所有选中的商品 cartId 列表
     let selectCartIdList = this.data.cartGoodsList.filter(goods => goods.checked).map(goods => goods.cartId);
-
-    let params = {
-      cartId: selectCartIdList,
-      totalPrice: this.data.priceAll
-    }
-
-    preOrderRequest.addPreOrder(params).then(res => {
-      if (res.code == 666) {
-        wx.navigateTo({
-          url: "/pages/preOrder/preOrder",
-        });
+    if (selectCartIdList.length != 0) {
+      let params = {
+        cartId: selectCartIdList,
+        totalPrice: this.data.priceAll
       }
-    }).catch(err => {
-      console.log(err)
-    })
+
+      preOrderRequest.addPreOrder(params).then(res => {
+        console.log(res)
+        // if (res.code == 666) {
+        //   wx.navigateTo({
+        //     url: `/pages/preOrder/preOrder?preOrderId=${res.result.preOrderId}`,
+        //   });
+        // }
+      }).catch(err => {
+        console.log(err)
+      })
+    } else {
+      wx.showToast({
+        title: "请先去选一些商品",
+        icon: 'none',
+        duration: 1000
+      });
+    }
   }
 })

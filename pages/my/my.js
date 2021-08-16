@@ -49,7 +49,7 @@ Page({
       }).catch(err => {
         wx.showToast({
           title: "请先绑定开发者",
-          icon: 'error ',
+          icon: 'error',
           duration: 1000
         });
       })

@@ -70,7 +70,6 @@ Page({
       pageNum: this.data.currPageNum,
       pageSize: this.data.pageSize
     };
-
     return homeRequest.getGoodsList(params)
       .then(res => {
 

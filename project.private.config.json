@@ -41,6 +41,12 @@
           "pathName": "pages/my/my",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/preOrder/preOrder",
+          "pathName": "pages/preOrder/preOrder",
+          "query": "",
+          "scene": null
         }
       ]
     }

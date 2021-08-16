@@ -76,7 +76,7 @@ export const preOrderRequest = {
    * @params ={preOrderId }
    * */
   getPreOrderDetail(params) {
-    return request.get('preOrder/add', params);
+    return request.get('preOrder/getDetail', params);
   },
 
 
@@ -95,7 +95,7 @@ export const userRequest = {
    * 微信登录
    * @code 
    * 
-   * */ 
+   * */
   wxLogin(params) {
     return request.post('user/wxlogin', params)
   }

@@ -24,7 +24,7 @@
     "lazyloadPlaceholderEnable": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": false,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -40,7 +40,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.17.0",
-  "appid": "wx1a4e63fdc266444b",
+  "appid": "wx6ec9e634f6dd4cb7",
   "projectname": "%E8%8A%B1%E8%AF%AD",
   "debugOptions": {
     "hidedInDevtools": []
