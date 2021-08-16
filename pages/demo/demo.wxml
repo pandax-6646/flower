@@ -1,1 +1,2 @@
-<button open-type="getUserInfo" bindtap='getUserInfo'>获取用户信息</button>
+<button bindtap="getAddress">获取地址</button>
+<view class="mt-10">{{address}}</view>
