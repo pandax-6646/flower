@@ -182,6 +182,7 @@ Page({
   // 删除商品按钮
   delBtn() {
     wx.showModal({
+      title:'提示',
       content: '是否删除选中的商品',
       success: (res) => {
         if (res.confirm) {
@@ -206,7 +207,9 @@ Page({
     let selectCartIdList = selectGoodsList.map(goods => goods.cartId);
 
     // 发送请求，删除后台数据
-    cartRequest.delCartGoods(selectCartIdList).then(res => {
+    cartRequest.delCartGoods({
+      cartId: selectCartIdList
+    }).then(res => {
       if (res.code == 666) {
         wx.showToast({
           title: `删除成功,${res.msg}`,
@@ -223,31 +226,34 @@ Page({
           key: "cartGoodsListAllNum",
           data: wx.getStorageSync('cartGoodsListAllNum') - num,
         })
+
+        // 更新页面上的数据
+        let cartGoodsList = this.data.cartGoodsList.filter(goods => !goods.checked)
+
+        // 小程序不支持 forEach的链式操作
+        cartGoodsList.forEach(goods => goods.checked = true)
+
+        this.setData({
+          cartGoodsList,
+          [`selectAllBtn.checked`]: true
+        })
+        this.getPriceAll();
+
+
+        // 当购物车列表为空时
+        if (this.data.cartGoodsList.length == 0) {
+          this.setData({
+            isEdit: false,
+            [`selectAllBtn.checked`]: false,
+            isShowEmpty: true
+          })
+        }
       }
     }).catch(err => {
       console.log(err);
     })
 
-    // 更新页面上的数据
-    let cartGoodsList = this.data.cartGoodsList.filter(goods => !goods.checked)
-    // 小程序不支持 forEach的链式操作
-    cartGoodsList.forEach(goods => goods.checked = true)
 
-    this.setData({
-      cartGoodsList,
-      [`selectAllBtn.checked`]: true
-    })
-    this.getPriceAll();
-
-
-    // 当购物车列表为空时
-    if (this.data.cartGoodsList.length == 0) {
-      this.setData({
-        isEdit: false,
-        [`selectAllBtn.checked`]: false,
-        isShowEmpty: true
-      })
-    }
   },
 
 

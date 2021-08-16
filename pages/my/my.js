@@ -11,10 +11,6 @@ Page({
     token: '',
   },
 
-
-
-
-
   onShow() {
     let token = wx.getStorageSync('token');
     if (token) {
@@ -25,12 +21,10 @@ Page({
   },
 
 
-
-
   // 用户登录
   login() {
     // 请求参数
-    let params = {}
+    let params = {};
 
     Promise.all([this.getCode(), this.getUserInfo()]).then(res => {
       params.code = res[0].code;
@@ -38,16 +32,19 @@ Page({
       params.encryptedData = res[1].encryptedData;
       params.userInfo = res[1].userInfo;
 
-
       userRequest.wxLogin(params).then(res => {
-        wx.setStorageSync({
-          key: "token",
-          data: res.result.token,
-        })
-        this.setData({
-          token: res.result.token,
-        })
+        console.log(res)
+        if (res.code == 666) {
+          wx.setStorageSync("token", res.result.token)
+          this.setData({
+            token: res.result.token,
+          })
 
+          wx.showToast({
+            title: '登录成功',
+            duration: 1000
+          });
+        }
 
       }).catch(err => {
         wx.showToast({
@@ -56,14 +53,8 @@ Page({
           duration: 1000
         });
       })
-
     })
-
   },
-
-
-
-
 
   // 获取微信的 code 信息
   getCode() {
@@ -95,117 +86,26 @@ Page({
         }
       })
     })
+  },
+
+  // 登出
+  logout() {
+    wx.showModal({
+      title: '提示',
+      content: '是否退出登录',
+      success: (res) => {
+        if (res.confirm) {
+          wx.setStorageSync('token', '');
+          this.setData({
+            token: ''
+          });
+        } else {
+          wx.showToast({
+            title: '已取消',
+            duration: 1000
+          });
+        }
+      }
+    })
   }
-
-
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // index.js
-// // 获取应用实例
-// const app = getApp();
-
-// Page({
-//   data: {
-//     token: '',
-//   },
-
-//   onShow(options) {
-//     let token = wx.getStorageSync('token');
-//     this.setData({
-//       token
-//     })
-//   },
-//   getUserProfile(e) {
-//     wx.getUserProfile({
-//       desc: '展示用户信息',
-//       success: (res) => {
-//         let {
-//           encryptedData,
-//           iv,
-//           userInfo
-//         } = res;
-//         this.login(encryptedData, iv, userInfo);
-//       },
-//       error: (error) => {
-//         console.log(error);
-//       }
-//     })
-//   },
-
-//   getLoginCode() {
-//     return new Promise((resolve, reject) => {
-//       wx.login({
-//         success: (result) => {
-//           resolve(result.code);
-//         },
-//         fail: (res) => {
-//           reject(res);
-//         }
-//       })
-//     })
-//   },
-
-//   // 登录后台服务器
-//   async login(iv, encryptedData, userInfo) {
-//     let code = await this.getLoginCode();
-//     let res = await app.$post('/user/wxlogin', {
-//       code,
-//       iv,
-//       encryptedData,
-//       userInfo
-//     })
-//     let token = res.result.token;
-//     this.setData({
-//       token
-//     })
-//     wx.setStorageSync('token', token)
-//   },
-
-//   logout() {
-//     wx.setStorageSync('token', '');
-//     this.setData({
-//       token: ''
-//     });
-//   }
-// })

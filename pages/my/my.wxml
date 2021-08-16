@@ -17,12 +17,14 @@
     <view class="flex fd-c ai-c">
       <text>10</text>
       <view>
-        <van-icon name="star" />我的收藏</view>
+        <van-icon name="star" />我的收藏
+      </view>
     </view>
     <view class="flex fd-c ai-c">
       <text>50</text>
       <view>
-        <van-icon name="location" />我的足迹</view>
+        <van-icon name="location" />我的足迹
+      </view>
     </view>
   </view>
   <view class="order-box bg-fff flex fd-c wp-100 jc-sa">
@@ -43,7 +45,7 @@
     </view>
   </view>
 </view>
-<view style="margin-top: 55px;">
+<view style="margin-top: 65px;">
   <van-cell title="领劵中心" icon="coupon-o" is-link />
   <van-cell title="我的收藏" icon="star-o" is-link />
   <van-cell title="收货地址" icon="location-o" is-link />

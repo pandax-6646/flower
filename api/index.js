@@ -56,7 +56,7 @@ export const cartRequest = {
    * @params ={cartId}, cartId 为数组
    * */
   delCartGoods(params) {
-    return request.get('cart/delById', params)
+    return request.post('cart/delById', params)
   },
 }
 

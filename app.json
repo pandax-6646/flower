@@ -27,16 +27,16 @@
         "text": "首页"
       },
       {
-        "iconPath": "./img/my.png",
-        "selectedIconPath": "./img/mying.png",
-        "pagePath": "pages/my/my",
-        "text": "个人中心"
-      },
-      {
         "iconPath": "./img/cart.png",
         "selectedIconPath": "./img/carting.png",
         "pagePath": "pages/cart/cart",
         "text": "购物车"
+      },
+      {
+        "iconPath": "./img/my.png",
+        "selectedIconPath": "./img/mying.png",
+        "pagePath": "pages/my/my",
+        "text": "个人中心"
       },
       {
         "iconPath": "./img/my.png",
