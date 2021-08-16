@@ -1,2 +1,44 @@
 <!--pages/preOrder/preOrder.wxml-->
-<view>s</view>
+<view>
+  <image src="../../img/colored-line.png  " />
+  <view>
+    <view>预计送达日期</view>
+    <view>
+      <text>请选择</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view>
+    <view>您的姓名 / 手机</view>
+    <view>
+      <text>请选择</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view>
+    <view>
+      <view>贺卡留言</view>
+      <view>填写即送精美贺卡</view>
+    </view>
+    <view>
+      <text>请选择</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view>
+    <view>您的姓名/手机</view>
+    <view>
+      <text>请选择</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view>
+    <view>备注/优惠券/权益卡/发票</view>
+    <view>
+      <text>请选择</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>
+
+<view>{{preOrderId}}</view>

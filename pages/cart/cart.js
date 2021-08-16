@@ -30,7 +30,7 @@ Page({
         success: (res) => {
           if (res.confirm) {
             wx.switchTab({
-              url: 'pages/my/my'
+              url: '/pages/my/my'
             })
           }
         }
@@ -211,7 +211,15 @@ Page({
         content: '是否删除选中的商品',
         success: (res) => {
           if (res.confirm) {
-            this.runDelGoods();
+
+            this.runDelGoods(() => {
+              wx.showToast({
+                title: `删除成功`,
+                icon: 'success',
+                duration: 1000
+              });
+            });
+
           } else {
             wx.showToast({
               title: '已取消',
@@ -231,8 +239,11 @@ Page({
   },
 
 
-  // 执行删除商品操作逻辑
-  runDelGoods() {
+  /**
+   * 执行删除商品操作逻辑
+   * @showToastHandle 弹窗的函数
+   * */
+  runDelGoods(showToastHandle) {
     // 获取所有选中的商品 cartId 列表
     let selectGoodsList = this.data.cartGoodsList.filter(goods => goods.checked);
     let selectCartIdList = selectGoodsList.map(goods => goods.cartId);
@@ -242,23 +253,20 @@ Page({
       cartId: selectCartIdList
     }).then(res => {
       if (res.code == 666) {
-        wx.showToast({
-          title: `删除成功,${res.msg}`,
-          icon: 'success',
-          duration: 1000
-        });
+        // 显示弹窗
+        showToastHandle && showToastHandle();
 
-        // 更新购物车里的商品总件数
+        // 更新 Storge 里购物车里的商品总件数
         let num = 0
         selectGoodsList.forEach(goods => {
           num += goods.buyNum;
         })
-        wx.setStorageSync("cartGoodsListAllNum", wx.getStorageSync('cartGoodsListAllNum') - num, )
+        wx.setStorageSync("cartGoodsListAllNum", wx.getStorageSync('cartGoodsListAllNum') - num)
 
         // 更新页面上的数据
         let cartGoodsList = this.data.cartGoodsList.filter(goods => !goods.checked)
 
-        // 小程序不支持 forEach的链式操作
+        // 小程序不支持 forEach 的链式操作
         cartGoodsList.forEach(goods => goods.checked = true)
 
         this.setData({
@@ -286,7 +294,9 @@ Page({
   // 生成预订单按钮
   preOrderBtn() {
     // 获取所有选中的商品 cartId 列表
-    let selectCartIdList = this.data.cartGoodsList.filter(goods => goods.checked).map(goods => goods.cartId);
+    let selectGoodsList = this.data.cartGoodsList.filter(goods => goods.checked)
+    let selectCartIdList = selectGoodsList.map(goods => goods.cartId);
+
     if (selectCartIdList.length != 0) {
       let params = {
         cartId: selectCartIdList,
@@ -294,12 +304,18 @@ Page({
       }
 
       preOrderRequest.addPreOrder(params).then(res => {
-        console.log(res)
-        // if (res.code == 666) {
-        //   wx.navigateTo({
-        //     url: `/pages/preOrder/preOrder?preOrderId=${res.result.preOrderId}`,
-        //   });
-        // }
+        if (res.code == 666) {
+
+          console.log(res.result.preOrderId)
+          wx.navigateTo({
+            url: `/pages/preOrder/preOrder?preOrderId=${res.result.preOrderId}`,
+            success: () => {
+
+              // 调用删除商品的函数
+              this.runDelGoods();
+            }
+          });
+        }
       }).catch(err => {
         console.log(err)
       })

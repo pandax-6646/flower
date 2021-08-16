@@ -68,7 +68,7 @@ export const preOrderRequest = {
    * @params ={cartId, totalPrice}
    * */
   addPreOrder(params) {
-    return request.get('preOrder/add', params);
+    return request.post('preOrder/add', params);
   },
 
   /**
