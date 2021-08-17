@@ -2,7 +2,7 @@
 
 <view class="top-bar flex jc-sb fs-12 bc-fff fixed wp-100">
   <view class="back" bindtap="backPage">
-    <van-icon name="arrow-left"  />
+    <van-icon name="arrow-left" />
     <text>返回</text>
   </view>
 

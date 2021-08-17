@@ -312,7 +312,7 @@ Page({
             success: () => {
 
               // 调用删除商品的函数
-              this.runDelGoods();
+              // this.runDelGoods();
             }
           });
         }

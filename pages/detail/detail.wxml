@@ -223,10 +223,9 @@
 </view>
 
 <van-goods-action class="footer">
-  <van-goods-action-icon icon="chat-o" text="客服" dot />
+  <van-goods-action-icon icon="chat-o" text="客服" />
   <navigator url="/pages/cart/cart" open-type="switchTab">
-    <text class="cartAllNum" style="position: ablesult; top: 0px;">{{cartGoodsListAllNum}}</text>
-    <van-goods-action-icon class="cart" icon="cart-o" text="购物车" />
+    <van-goods-action-icon class="cart" icon="cart-o" text="购物车" info="{{cartGoodsListAllNum}}" />
   </navigator>
   <van-goods-action-icon icon="shop-o" text="店铺" />
   <van-goods-action-button type="warning" bindtap="addCart" text="加入购物车" />

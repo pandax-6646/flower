@@ -33,8 +33,8 @@ Page({
       params.userInfo = res[1].userInfo;
 
       userRequest.wxLogin(params).then(res => {
-        console.log(res)
         if (res.code == 666) {
+          console.log(res.result)
           wx.setStorageSync("token", res.result.token)
           this.setData({
             token: res.result.token,
