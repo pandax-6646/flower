@@ -1,11 +1,3 @@
-<!-- <van-cell is-link label="描述信息"> -->
-
-<!-- <view slot="title"> -->
-<button open-type="getPhoneNumber" bindgetphonenumber="showActions">收货姓名和手机号</button>
-<!-- </view>
-</van-cell> -->
-
-<!-- <button bindtap="showActions">sadsdadsadasdasd</button> -->
-
-<!-- <van-action-sheet show="{{ show }}" actions="{{ actions }}" description="请确认收货手机和姓名" bind:close="onClose" -->
-<!-- bind:select="onSelect" /> -->
+<van-cell title="{{title}}" is-link bindtap="showSheet" />
+<van-action-sheet show="{{ show }}" actions="{{ userInfo }}" bind:close="onClose" description="请确认"
+  bind:select="onSelect" />

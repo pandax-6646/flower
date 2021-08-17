@@ -10,7 +10,15 @@ Page({
 
     address: '',
     latitude: '',
-    longitude: ''
+    longitude: '',
+
+    // 控制底部收货运动面板
+    show: false,
+    userInfo: [{
+      name: '熊**',
+      phone: '187****4724',
+    }],
+    title: '收货手机和姓名'
   },
 
   onLoad: function (options) {
@@ -42,7 +50,27 @@ Page({
     });
   },
 
+  // 显示底部收货运动面板
+  showSheet() {
+    this.setData({
+      show: true
+    })
+  },
 
+  // 关闭底部收货运动面板
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+
+  // 选中的收货运动面板
+  onSelect(event) {
+    this.setData({
+      show: false,
+      title: this.data.userInfo[0].name
+    })
+  },
 
   // 获取预订单信息
   getPreOrderDetailInfo() {
