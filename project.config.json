@@ -21,6 +21,7 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
     "useApiHostProcess": true,
@@ -30,18 +31,16 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "bundle": false,
     "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "showES6CompileOption": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.17.0",
-  "appid": "wx1a4e63fdc266444b",
+  "appid": "wx6ec9e634f6dd4cb7",
   "projectname": "%E8%8A%B1%E8%AF%AD",
   "debugOptions": {
     "hidedInDevtools": []

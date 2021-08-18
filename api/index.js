@@ -97,7 +97,17 @@ export const userRequest = {
    * 
    * */
   wxLogin(params) {
-    return request.post('user/wxlogin', params)
+    return request.post('user/wxlogin', params);
   }
 
+}
+
+
+
+export const orderRequest = {
+
+  // 创建订单
+  createOrder() {
+    return request.post('order/create');
+  }
 }

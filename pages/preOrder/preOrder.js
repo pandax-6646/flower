@@ -1,5 +1,6 @@
 import {
-  preOrderRequest
+  preOrderRequest,
+  orderRequest
 } from '../../api/index.js'
 
 const chooseLocation = requirePlugin('chooseLocation'); // 导入插件
@@ -103,5 +104,19 @@ Page({
     this.setData({
       address: location ? location.name : '收货地址'
     })
+  },
+
+
+
+
+
+  // 支付按钮
+  pay() {
+    orderRequest.createOrder().then(res => {
+      let obj = res.result;
+      console.log(obj)
+    })
+
   }
+
 })
