@@ -21,5 +21,14 @@
   <van-action-sheet show="{{ show }}" actions="{{ userInfo }}" bind:close="onClose" description="请确认"
     bind:select="onSelect" />
 </view>
-<button bindtap="pay">支付</button>
+
+<view>
+  
+</view>
+
+<van-submit-bar
+  price="{{ 3050 }}"
+  button-text="立即支付"
+  bind:submit="pay"
+/>
 <view>{{preOrderId}}</view>

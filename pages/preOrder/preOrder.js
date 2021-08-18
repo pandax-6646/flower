@@ -3,7 +3,7 @@ import {
   orderRequest
 } from '../../api/index.js'
 
-const chooseLocation = requirePlugin('chooseLocation'); // 导入插件
+// const chooseLocation = requirePlugin('chooseLocation'); // 导入插件
 
 Page({
   data: {
@@ -33,13 +33,13 @@ Page({
   onShow: function () {
 
 
-    this.getCurrAddress();
+    // this.getCurrAddress();
 
   },
 
   //  获取用户地址信息
   getAddress() {
-    const key = 'TMBBZ-5GYCP-AFQDK-L2QCS-K3323-HFBAX'; //使用在腾讯位置服务申请的key
+    const key = 'XBZBZ-OBG63-LOD3N-3QR5Q-X6Z2Q-BFBIR'; //使用在腾讯位置服务申请的key
     const referer = '花间小程序'; //调用插件的app的名称
     const location = JSON.stringify({
       latitude: this.data.latitude,
@@ -113,10 +113,51 @@ Page({
   // 支付按钮
   pay() {
     orderRequest.createOrder().then(res => {
+
       let obj = res.result;
-      console.log(obj)
+      wx.requestPayment({
+        // 时间戳
+        timeStamp: obj.timeStamp,
+        // 随机字符串
+        nonceStr: obj.nonceStr,
+        // 统一下单接口返回的 prepay_id 参数值
+        package: obj.package,
+        // 签名类型
+        signType: obj.signType,
+        // 签名
+        paySign: obj.paySign,
+
+        total_fee: obj.total_fee,
+        // 支付成功的回调
+        success(res) {
+          console.log(res);
+        },
+        // 支付失败的回调
+        fail(err) {
+          console.log(err,'sdsdsdsdsddsd');
+        },
+      });
+
+
+
+
     })
 
   }
 
+
+
+  // ,
+  // "plugins": {
+  //   "chooseLocation": {
+  //     "version": "1.0.5",
+  //     "provider": "wx1a4e63fdc266444b"
+  //   }
+  // },
+  // "permission": {
+  //   "scope.userLocation": {
+  //     "desc": "你的位置信息将用于小程序定位"
+  //   }
+  // },
+  // "sitemapLocation": "sitemap.json"
 })
