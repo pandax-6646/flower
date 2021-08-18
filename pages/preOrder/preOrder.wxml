@@ -4,8 +4,9 @@
   </view>
   <van-cell title="送达日期" value="预计后天送达" />
   <van-cell required title="{{title}}" is-link bindtap="showSheet" />
-  <!-- <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" /> -->
-  <!-- </van-cell> -->
+  <van-cell>
+    <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />
+  </van-cell>
   <van-cell required is-link bindtap="getAddress">
     <view slot="title">
       <view class="van-cell-text">{{ address }}</view>
@@ -22,13 +23,12 @@
     bind:select="onSelect" />
 </view>
 
-<view>
-  
+<view style="margin-bottom: 55px;">
+  <van-card wx:for="{{goodsList}}" num="{{item.buyNum}}" price="{{item.price}}" title="{{item.goodName}}"
+    thumb="{{ item.imgUrl }}" wx:key="flowerId" />
+
 </view>
 
-<van-submit-bar
-  price="{{ 3050 }}"
-  button-text="立即支付"
-  bind:submit="pay"
-/>
+
+<van-submit-bar price="{{ allrice }}" button-text="立即支付" bind:submit="pay" />
 <view>{{preOrderId}}</view>

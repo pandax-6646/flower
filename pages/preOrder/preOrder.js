@@ -19,7 +19,11 @@ Page({
       name: '熊**',
       phone: '187****4724',
     }],
-    title: '收货手机和姓名'
+    title: '收货手机和姓名',
+
+    goodsList: [],
+    allPrice: 0
+
   },
 
   onLoad: function (options) {
@@ -34,7 +38,7 @@ Page({
 
 
     // this.getCurrAddress();
-
+    this.getPreOrderDetailInfo()
   },
 
   //  获取用户地址信息
@@ -79,9 +83,23 @@ Page({
       preOrderId: this.data.preOrderId
     }
     preOrderRequest.getPreOrderDetail(params).then(res => {
-      console.log(res);
+      if (res.code == 666) {
+        console.log(res.result)
+        this.setData({
+          goodsList: res.result.carts,
+          allPrice: res.result.totalPrice * 100
+        })
+      }
     }).catch(err => {
-      console.log(err)
+
+      wx.showToast({
+        title: '支付失败',
+        icon: 'error',
+        duration: 1000
+      });
+      wx.switchTab({
+        url: "/pages/cart/cart",
+      });
     })
   },
 
@@ -134,7 +152,7 @@ Page({
         },
         // 支付失败的回调
         fail(err) {
-          console.log(err,'sdsdsdsdsddsd');
+          console.log(err, 'sdsdsdsdsddsd');
         },
       });
 
@@ -147,17 +165,5 @@ Page({
 
 
 
-  // ,
-  // "plugins": {
-  //   "chooseLocation": {
-  //     "version": "1.0.5",
-  //     "provider": "wx1a4e63fdc266444b"
-  //   }
-  // },
-  // "permission": {
-  //   "scope.userLocation": {
-  //     "desc": "你的位置信息将用于小程序定位"
-  //   }
-  // },
-  // "sitemapLocation": "sitemap.json"
+
 })
