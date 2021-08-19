@@ -4,31 +4,21 @@
   </view>
   <van-cell title="送达日期" value="预计后天送达" />
   <van-cell required title="{{title}}" is-link bindtap="showSheet" />
-  <van-cell>
-    <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />
-  </van-cell>
   <van-cell required is-link bindtap="getAddress">
     <view slot="title">
       <view class="van-cell-text">{{ address }}</view>
     </view>
   </van-cell>
-  <van-cell required>
+  <van-cell >
     <view slot="title">
       <input type="text" placeholder="留言贺卡，填写即送精美贺卡" />
     </view>
   </van-cell>
   <van-cell title="备注/优惠券/权益卡/发票" is-link />
-
-  <van-action-sheet show="{{ show }}" actions="{{ userInfo }}" bind:close="onClose" description="请确认"
-    bind:select="onSelect" />
+  <van-action-sheet show="{{ show }}" actions="{{ userInfo }}" bind:close="onClose" description="请确认" bind:select="onSelect" />
 </view>
-
 <view style="margin-bottom: 55px;">
-  <van-card wx:for="{{goodsList}}" num="{{item.buyNum}}" price="{{item.price}}" title="{{item.goodName}}"
-    thumb="{{ item.imgUrl }}" wx:key="flowerId" />
-
+  <van-card wx:for="{{goodsList}}" num="{{item.buyNum}}" price="{{item.price}}" title="{{item.goodName}}" thumb="{{ item.imgUrl }}" wx:key="flowerId" />
 </view>
-
-
-<van-submit-bar price="{{ allrice }}" button-text="立即支付" bind:submit="pay" />
+<van-submit-bar price="{{ allPrice }}" button-text="立即支付" bind:submit="pay" wx:if="{{!show}}" />
 <view>{{preOrderId}}</view>

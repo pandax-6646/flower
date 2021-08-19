@@ -5,9 +5,7 @@
     "pages/cart/cart",
     "pages/index/index",
     "pages/detail/detail",
-    "pages/orderDetail/orderDetail",
-    "pages/orderList/orderList",
-    "pages/preOrder/preOrder"
+    "pages/pay/pay"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -37,12 +35,6 @@
         "selectedIconPath": "./img/mying.png",
         "pagePath": "pages/my/my",
         "text": "个人中心"
-      },
-      {
-        "iconPath": "./img/my.png",
-        "selectedIconPath": "./img/mying.png",
-        "pagePath": "pages/demo/demo",
-        "text": "demo"
       }
     ]
   },
@@ -113,6 +105,7 @@
     "van-share-sheet": "./vant/share-sheet/index",
     "van-config-provider": "./vant/config-provider/index"
   },
+  "sitemapLocation": "sitemap.json",
   "plugins": {
     "chooseLocation": {
       "version": "1.0.5",
@@ -123,6 +116,5 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序定位"
     }
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }
