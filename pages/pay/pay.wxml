@@ -21,4 +21,3 @@
   <van-card wx:for="{{goodsList}}" num="{{item.buyNum}}" price="{{item.price}}" title="{{item.goodName}}" thumb="{{ item.imgUrl }}" wx:key="flowerId" />
 </view>
 <van-submit-bar price="{{ allPrice }}" button-text="立即支付" bind:submit="pay" wx:if="{{!show}}" />
-<view>{{preOrderId}}</view>

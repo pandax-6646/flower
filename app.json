@@ -105,16 +105,5 @@
     "van-share-sheet": "./vant/share-sheet/index",
     "van-config-provider": "./vant/config-provider/index"
   },
-  "sitemapLocation": "sitemap.json",
-  "plugins": {
-    "chooseLocation": {
-      "version": "1.0.5",
-      "provider": "wx1a4e63fdc266444b"
-    }
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序定位"
-    }
-  }
+  "sitemapLocation": "sitemap.json"
 }

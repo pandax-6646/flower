@@ -306,13 +306,12 @@ Page({
       preOrderRequest.addPreOrder(params).then(res => {
         if (res.code == 666) {
 
-          console.log(res.result.preOrderId)
           wx.navigateTo({
-            url: `/pages/preOrder/preOrder?preOrderId=${res.result.preOrderId}`,
+            url: `/pages/pay/pay?preOrderId=${res.result.preOrderId}`,
             success: () => {
 
               // 调用删除商品的函数
-              // this.runDelGoods();
+              this.runDelGoods();
             }
           });
         }

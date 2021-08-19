@@ -90,7 +90,6 @@ Page({
       .getPreOrderDetail(params)
       .then((res) => {
         if (res.code == 666) {
-          console.log(res.result);
           this.setData({
             goodsList: res.result.carts,
             allPrice: res.result.totalPrice * 100,

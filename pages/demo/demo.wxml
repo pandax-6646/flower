@@ -1,3 +1,0 @@
-<van-cell title="{{title}}" is-link bindtap="showSheet" />
-<van-action-sheet show="{{ show }}" actions="{{ userInfo }}" bind:close="onClose" description="请确认"
-  bind:select="onSelect" />
